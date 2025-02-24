@@ -37,7 +37,6 @@
     {
        
             public int Id { get; set; }
-            public string НомерДокумента { get; set; }
             public string НомерЭлектроннойНакладной { get; set; }
             public string Прицеп { get; set; }
             public string ДоверенностьДата { get; set; }
