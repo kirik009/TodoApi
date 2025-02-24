@@ -32,61 +32,17 @@ app.MapPost("/todoitems", async (Todo todo) =>
     arggs);
     
 
-    //Object[] obj = new Object[] { todo.Name }; // Замените на свои свойства
-
-    ////"{\"name\":\"walk anton\",\"isComplete\":true}"
-    //Object[] Строчка = new Object[1];
-
-
-    //Строчка[0] = "{\"name\":\"walk anton\",\"isComplete\":\"1\"}";
-
-    //Object[] Объект = new Object[2];
-
-
-    //Объект[0] = todo.Склад;
-    //Объект[1] = todo.Автомобиль;
-
-
-
-    //Object[] Отчет = new Object[3];
-
-
-    //Отчет[0] = "Отчет";
-    //Отчет[1] = Объект;
-    //Отчет[2] = "D:\\wor\\UN_JSON_.ert";
-
-    //object form =
-    //type.InvokeMember(@"Тест",
-    //flagsM, null, inst, Отчет);
-    //if (ok)
-    //{
-    //    Object[] Обьект = new Object[2];
-
-     
-    //    Обьект[0] = todo.Склад;
-    //    Обьект[1] = todo.Автомобиль;
-
-    //}
-    //ДокПроверка.GetType().InvokeMember(@"Новый", flagsM, null, ДокПроверка, new object[] { null });
-    //ДокПроверка.GetType().InvokeMember(@"УстановитьАтрибут", flagsM, null, ДокПроверка, new object[] { "Реквизит", "С# сила" });
-    //ДокПроверка.GetType().InvokeMember(@"Записать", flagsM, null, ДокПроверка, new object[] { null });
-
-    //Object[] Проверка = new Object[1];
-
-    //Проверка[0] = @"Документ.Проверка";
-
-
     string receivedJson = JsonSerializer.Serialize(todo);
 
-    Object[] стр = new Object[1];
+    Object[] str = new Object[1];
 
-    стр[0] = receivedJson;
+    str[0] = receivedJson;
   
    
 
 
     type.InvokeMember(@"Тест",
-    flagsM, null, inst, стр);
+    flagsM, null, inst, str);
 
     inst = null;
   
