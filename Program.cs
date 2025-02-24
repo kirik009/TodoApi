@@ -41,7 +41,7 @@ app.MapPost("/todoitems", async (Todo todo) =>
    
 
 
-    type.InvokeMember(@"Тест",
+    type.InvokeMember("Test",
     flagsM, null, inst, str);
 
     inst = null;
