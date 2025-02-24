@@ -12,14 +12,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Object = System.Object;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 var app = builder.Build();
 
-app.MapGet("/todoitems", async (TodoDb db) =>
-    await db.Todos.ToListAsync());
-
-app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
+app.MapPost("/todoitems", async (Todo todo) =>
 {
     var v77 = Type.GetTypeFromProgID("V77S.Application", true);
     var inst = Activator.CreateInstance(v77);
@@ -86,34 +82,24 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
     //Object[] Проверка = new Object[1];
 
     //Проверка[0] = @"Документ.Проверка";
-    Object[] Объект = new Object[2];
 
-
-    Объект[0] = todo.Склад;
-    Объект[1] = todo.Автомобиль;
 
     string receivedJson = JsonSerializer.Serialize(todo);
 
     Object[] стр = new Object[1];
 
     стр[0] = receivedJson;
-    Объект[0] = todo.Склад;
-    Объект[1] = todo.Автомобиль;
-
+  
   
 
 
     type.InvokeMember(@"Тест",
     flagsM, null, inst, стр);
 
-    //inst.GetType().InvokeMember(@"ЗавершитьРаботуСистемы", flagsM, null, inst,
-    //new object[] { 0});
     inst = null;
-    db.Todos.Add(todo);
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-
-        await db.SaveChangesAsync();
+  
+    GC.Collect();
+    GC.WaitForPendingFinalizers();
 
 
         return Results.Created($"/todoitems/{todo.Id}", todo);
