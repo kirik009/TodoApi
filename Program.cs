@@ -82,7 +82,7 @@ app.MapPost("/todoitems", async (Todo todo) =>
 
     стр[0] = receivedJson;
   
-  
+   
 
 
     type.InvokeMember(@"Тест",
