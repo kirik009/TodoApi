@@ -62,7 +62,7 @@ app.MapPost("/todoitems", async (Todo todo) =>
     //{
     //    Object[] Обьект = new Object[2];
 
-
+     
     //    Обьект[0] = todo.Склад;
     //    Обьект[1] = todo.Автомобиль;
 
