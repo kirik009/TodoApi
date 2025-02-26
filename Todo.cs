@@ -1,7 +1,7 @@
-п»їnamespace Api
+namespace Api
 {
 
-    public class РЎРєР»Р°Рґ
+    public class Склад
     {
         public int Id { get; set; }
         public int x { get; set; }
@@ -9,26 +9,26 @@
 
     }
 
-    public class РўРѕРІР°СЂ
+    public class ТабличнаяЧасть
     {
 
         public int Id { get; set; }
-        public double РљРѕР»РёС‡РµСЃС‚РІРѕ { get; set; }
-        public double РљРѕР»РёС‡РµСЃС‚РІРѕРЈРїР°РєРѕРІРѕРє { get; set; }
-        public double Р¦РµРЅР° { get; set; }
-        public double РЎСѓРјРјР° { get; set; }
+        public double Количество { get; set; }
+        public double КоличествоУпаковок { get; set; }
+        public double Цена { get; set; }
+        public double Сумма { get; set; }
 
 
 
     }
-    public class РљРѕРЅС‚СЂР°РіРµРЅС‚
+    public class Контрагент
     {
 
         public int Id { get; set; }
-        public string РќР°РёРјРµРЅРѕРІР°РЅРёРµ { get; set; }
-        public string РќР°РёРјРµРЅРѕРІР°РЅРёРµРџРѕР»РЅРѕРµ { get; set; }
-        public string РљРџРџ { get; set; }
-        public string РљРѕРґРџРѕРћРљРџРћ { get; set; }
+        public string Наименование { get; set; }
+        public string НаименованиеПолное { get; set; }
+        public string КПП { get; set; }
+        public string КодПоОКПО { get; set; }
 
 
 
@@ -37,18 +37,20 @@
     {
        
             public int Id { get; set; }
-            public string РќРѕРјРµСЂР­Р»РµРєС‚СЂРѕРЅРЅРѕР№РќР°РєР»Р°РґРЅРѕР№ { get; set; }
-            public string РџСЂРёС†РµРї { get; set; }
-            public string Р”РѕРІРµСЂРµРЅРЅРѕСЃС‚СЊР”Р°С‚Р° { get; set; }
-            public string Р”РѕРІРµСЂРµРЅРЅРѕСЃС‚СЊРќРѕРјРµСЂ { get; set; }
-            public string Р”РѕРІРµСЂРµРЅРЅРѕСЃС‚СЊР›РёС†Рѕ { get; set; }
-            public string РљРѕРґР‘Р»Р°РЅРєР° { get; set; }
-            public string РћСЃРЅРѕРІР°РЅРёРµ { get; set; }
-            public List<РўРѕРІР°СЂ> РўРѕРІР°СЂС‹ { get; set; } = new List<РўРѕРІР°СЂ>();
+            public string ВидОбъекта { get; set; }
+            public string GUID_Retail { get; set; }
+            public string НомерЭлектроннойНакладной { get; set; }
+            public string Прицеп { get; set; }
+            public string ДоверенностьДата { get; set; }
+            public string ДоверенностьНомер { get; set; }
+            public string ДоверенностьЛицо { get; set; }
+            public string КодБланка { get; set; }
+            public string Основание { get; set; }
+            public List<ТабличнаяЧасть> ТабличнаяЧасть { get; set; } = new List<ТабличнаяЧасть>();
 
-            public РљРѕРЅС‚СЂР°РіРµРЅС‚ РљРѕРЅС‚СЂР°РіРµРЅС‚ { get; set; }
-            public РЎРєР»Р°Рґ РЎРєР»Р°Рґ { get; set; }
-            public string РђРІС‚РѕРјРѕР±РёР»СЊ { get; set; }
+            public Контрагент Контрагент { get; set; }
+            public Склад Склад { get; set; }
+            public string Автомобиль { get; set; }
             
             
             

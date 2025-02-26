@@ -6,15 +6,11 @@ using System.Text.Json;
 using Object = System.Object;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
 
-app.MapGet("/todoitems", async (TodoDb db) =>
-    await db.Todos.ToListAsync());
 
-app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
+app.MapPost("/todoitems", async (Todo todo) =>
 {
    
    
@@ -39,34 +35,13 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
 
     if (!ok)
     {
-        db.Todos.Add(todo);
-        await db.SaveChangesAsync();
         return Results.Problem("Ошибка инициализации соединения с 1С 7.7");
 
     }
 
 
-    while (db.Todos.Count() > 0)
-    {
-        db.Todos.ToList().ForEach(x => {
-            string receivedJson = JsonSerializer.Serialize(x);
-            Object[] str = new Object[1];
-            str[0] = receivedJson;
-
-            try
-            {
-                type.InvokeMember("Test", flagsM, null, inst, str);
-                db.Todos.Remove(x);
-
-            }
-            catch (Exception ex)
-            {
-                
-                 Results.Problem($"Ошибка записи в 1С: {ex}");
-
-            }
-        });
-    }
+   
+    
 
 
     string receivedJson = JsonSerializer.Serialize(todo);
@@ -75,13 +50,13 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
 
         try
         {
-            type.InvokeMember("Test", flagsM, null, inst, str);
+        var spisok = inst.GetType().InvokeMember("CreateObject", flagsM, null, inst, new object[] {"СписокЗначений" });
+        spisok.GetType().InvokeMember(@"Установить", flagsM, null, spisok, new object[] { "PostObject", receivedJson});
+        inst.GetType().InvokeMember("OpenForm", flagsM, null, inst, new object[] { "Отчет", spisok, "D:\\wor\\UN_JSON_.ert" });
             
         }
         catch (Exception ex)
         {      
-                db.Todos.Add(todo);
-                await db.SaveChangesAsync();
                 return Results.Problem($"Ошибка записи в 1С");
            
         }
